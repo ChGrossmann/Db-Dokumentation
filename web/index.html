@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Christoph Grossmann Löungen Prüfung 4. Semester</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    
+
+        <h1>Lösungen zur Prüfung 4.Semester Datenbanken</h1>
+
+        <h3>Aufgabe 1</h3>
+        <p> Analysieren Sie die Rechnung und bestimmen Sie mögliche Entitäten für ein Entity-Relationship-Modell.
+        </p>
+        <h4>Antwort 1.1</h4>
+
+        <ul>
+
+            <li>Rechnung
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>rechnugsnummer : numeric</li>
+                    <li>id_lieferfirma : numeric fk</li>
+                    <li>id_kunde : numeric fk</li>
+                    <li>id_mwst : numeric fk</li>
+                    <li>subtotal : numeric</li>
+                    <li>mwstbetrag : numeric</li>
+                    <li>preistotalinklmwst : numeric</li>
+                    <li>bemerkungen : varchar(2000)</li>
+                </ul>
+
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li>Lieferfirma
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>firmenname : varchar(100)</li>
+                    <li>id_adresse : numeric fk</li>
+                    <li>telefonnummer : numeric</li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li>Adresse
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>strasse : varchar(100)</li>
+                    <li>strassennummer : numeric</li>
+                    <li>ort : varchar(100)</li>
+                    <li>plz : numeric</li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li>Kunde
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>kundennummer : numeric</li>
+                    <li>firmenname : varchar(100)</li>
+                    <li>vormane : varchar(100)</li>
+                    <li>nachname : varchar(100)</li>
+                    <li>id_lieferfirma : varchar(100)</li>
+                    <li>id_rechnungsadresse : varchar(100)</li>
+                    <li>telefonnummer : numeric</li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li>Artikel
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>artikelnummer : numeric</li>
+                    <li>bezeichnung : varchar(100)</li>
+                    <li>farbe : varchar(50)</li>
+                    <li>grösse : varchar(50)</li>
+                    <li>preis : numeric</li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <ul>
+            <li>Rechnungsposition
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>id_rechnung : numeric fk</li>
+                    <li>id_artikel : numeric fk</li>
+                    <li>menge : numeric</li>
+                    <li>preistotal : numeric</li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <ul>
+
+            <li>Mehrwertsteuer
+                <ul>
+                    <li>id : serial pk</li>
+                    <li>mwst : numeric</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+        <h3>Aufgabe 2 - 10 Punkte</h3>
+        <p> Erstellen Sie ein ERM zu Ihrer Lösung in Aufgabe 1.</p>
+        <h4>Antwort 2.1</h4>
+        <div><img src="/Users/ch.grossmann/NetBeansProjects/TEKO/DB/DB Prüfung 4.Semester Web/src/ch/teko/grossmac/db/a2/ER-Diagramm A2.1.pdf" width="800" alt="Bild wurde nicht gefunden"></div>
+        <br>
+        
+        
+        
+        <h2>Aufgabe 3 - 30 Punkte</h2>
+      <p>Erstellen Sie eine Java Web-Lösung, die folgenden Java Klassen besitzt:</p>
+      <ul>
+        <li><pre>dao.DBConnection</pre></li>
+        <li><pre>dao.ArtikelDao</pre></li>
+        <li><pre>beans.Artikel</pre></li>
+      </ul>
+      <p>Die Klasse ArtikelDao sollte folgende Methoden enthalten:</p>
+      <ul>
+        <li><pre>allArtikel()</pre></li>
+        <li><pre>boolean createArtikel(Artikel artikel)</pre></li>
+        <li><pre>Artikel findArtikel(int artikelNr)</pre></li>
+        <li><pre>List Artikel()</pre></li>
+      </ul>
+      <p>In dieser Aufgabe wird der Name Artikel verwendet, der dem Namen
+        Artikel auf der Rechnung entspricht. Haben Sie in den Aufgaben 1 und 2
+        einen anderen Namen verwendet, so können Sie letzteren verwenden.
+      </p>
+      <p>
+        Ziel dieser Aufgabe ist es eine kleine Web-Anwendung
+        zu schreiben, die folgende Funktionen erfüllen soll:
+      </p>
+      <ul>
+        <li>Artikel auflisten</li>
+        <li>Artikel anzeigen</li>
+        <li>Artikel erfassen</li>
+      </ul>
+      <p>
+        Nachfolgend werden die Webseiten dargestellt, die Sie für die Anwendung
+        verwenden sollten. Die Seiten können Sie gemäss Ihren Vorstellungen gestalten.
+      </p>
+      <h3>Artikel auflisten</h3>
+      <table border="1">
+        <tr>
+          <td>ArtikelNr</td>
+          <td>Beschreibung</td>
+          <td>Menge</td>
+          <td>Einheit</td>
+          <td>Preis</td>
+        </tr>
+        <tr>
+          <td>33701</td>
+          <td>Kandelaber-Primel rot</td>
+          <td>3</td>
+          <td>STK</td>
+          <td>4.50</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </table>
+      <h3>Artikel anzeigen</h3>
+      <div style="border-style: solid; border-width: 1pt; padding-left: 5pt;">
+        <p> <strong>ArtikelNr:</strong> 33701</p>
+        <p> <strong>Beschreibung:</strong> Kandelaber Primel rot</p>
+        <p><strong>Anzahl:</strong> 3</p>
+        <p> <strong>Einheit:</strong> STK</p>
+        <p> <strong>Preis:</strong> 4.50</p>
+      </div>
+      <h3>Artikel erfassen</h3>
+      <div style="border-style: solid; border-width: 1pt; padding-left: 5pt;">
+        <p> <label style="font-weight: bold;">ArtikelNr:</label>
+        <br><input type="text" name="nr"></p>
+        <p> <label style="font-weight: bold;">Beschreibung:</label>
+        <br><input type="text" name="beschreibung"></p>
+        <p><label style="font-weight: bold;">Anzahl:</label>
+        <br><input type="text" name="anzahl"></p>
+        <p> <label style="font-weight: bold;">Einheit:</label>
+        <br><input type="text" name="einheit"></p>
+        <p> <label style="font-weight: bold;">Preis:</label>
+        <br><input type="text" name="preis"></p>
+        <p><input type="submit" name="save" value="Artikel speichern"></p>
+      </div>
+      <h2>Antwort 3.1</h2>
+      <h3>dao.DbConnection Code</h3>
+      <div style="min-height: 100px; max-width: 500px; border-style: solid; border-width: 1pt">
+      </div>
+      <h3>dao.ArtikelDao Code</h3>
+      <div style="min-height: 100px; max-width: 500px; border-style: solid; border-width: 1pt">
+      </div>
+      <h3>beans.Artikel Code</h3>
+      <div style="min-height: 100px; max-width: 500px; border-style: solid; border-width: 1pt">
+      </div>
+      <h3>weiterer Code</h3>
+      <div style="min-height: 100px; max-width: 500px; border-style: solid; border-width: 1pt">
+      </div>
+      <p>...</p>
+      <h3>Beschreibung der Lösung aus Anwendersicht</h3>
+      <div style="min-height: 100px; max-width: 500px; border-style: solid; border-width: 1pt">
+      </div>
+      <h3>Link zum Code oder der lauffähigen Web-Site</h3>
+      <a href="#">Demo Aufgabe 3</a>
+      <br><br>
+      <div>
+      <strong>Hinweis:</strong> Die Notizen WebProduct können als Vorlage verwendet werden.
+      </div>
+
+
+    
+
+</html>
