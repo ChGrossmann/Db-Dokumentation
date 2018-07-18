@@ -13,7 +13,7 @@ CREATE DATABASE artikelliste;
 
 CREATE TABLE artikelliste(
 id serial primary key,
-artikelnummer numeric,
+artikelnummer varchar(150),
 bezeichnung varchar(100),
 menge numeric,
 einheit varchar(100),
